@@ -6,12 +6,12 @@ import shortid from 'shortid';
 export default function(Comp) {
     class Auth extends React.Component {
         componentWillMount() {
-            // 如果没有登录，就跳转到登录页
+            // If not logged in, jump to login page
             if(this.props.isAuth === false) {
                 this.props.addFlashAc({
                     id: shortid.generate(),
                     type: 'alert-primary',
-                    text: '请登录'
+                    text: 'Please Login'
                 });
                 this.props.history.push('/login');
             }

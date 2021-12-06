@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import decode from "jwt-decode";
 import shortid from 'shortid';
-import axios from "../../utils/request";
+
 
 class LoginForm extends Component {
   state = {
@@ -17,10 +17,12 @@ class LoginForm extends Component {
     if (data.status === 0) {
       // Save token to local
       localStorage.setItem('@#@TOKEN', data.token);
+      localStorage.setItem('userInfo', data.userInfo);
+
       // Sync user's state and info Redux
       this.props.loginFn.syncInfoAc(decode(data.token));
       // Jump to homepage
-      this.props.history.push("/");
+      this.props.history.push("/personal");
       // Hint
       this.props.flashFn.addFlashAc({
         type: "alert-primary",

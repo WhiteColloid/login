@@ -7,7 +7,7 @@ import App from "./App";
 import { syncInfoAc } from './pages/login/store/actionCreators'
 
 const tk = localStorage.getItem('@#@TOKEN');
-// 解析 TOKEN 并同步到 Redux
+//Redux Analyze token and sync to Redux
 if (tk) {
   try {
     store.dispatch(syncInfoAc(decode(tk)))

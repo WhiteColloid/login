@@ -1,34 +1,43 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, {Component} from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-// 导航
+// Navigator
 import Navigator from "./pages/navigator";
-// 首页
+// Homepage
 import Home from "./pages/home";
-// 注册
+// Registration
 import Register from "./pages/registor";
-// 登录
+// Login
 import Login from "./pages/login";
-// 提示
+// Hints
 import Flash from "./pages/flash";
-// 个人
+// Personal center
 import Personal from "./pages/personal";
 // Auth
 import Auth from './utils/auth';
+// SurveyComponent
+import Survey from './pages/survey';
+// StudentTable
+import studentTable from './pages/studentTable';
+
+
+
 
 export default class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Navigator />
-        <Flash />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/personal" component={Auth(Personal)} />
-        </Switch>
-      </Router>
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <Navigator/>
+                <Flash/>
+                <Switch>
+                    <Route path="/" exact component={Home}/>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/register" component={Register}/>
+                    <Route path="/personal" component={Auth(Personal)}/>
+                    <Route path="/survey" component={Survey}/>
+                    <Route path="/studentTable" component={studentTable}/>
+                </Switch>
+            </Router>
+        );
+    }
 }

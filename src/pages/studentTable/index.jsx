@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 
 import {connect} from "react-redux";
-import Student from "./Student";
-import Professor from "./Professor"
+import StudentTable from "./StudentTable"
 import {bindActionCreators} from "redux";
 import {actionCreators as classActionCreators} from "./store";
 import {actionCreators as flashActionCreators} from "../flash/store";
@@ -13,12 +12,19 @@ class Personal extends Component {
         isSurvey: 0
     };
 
+    componentDidMount() {
+        let search = this.props.location.search
+        if ((search ?? '') === '') {
+            return
+        }
+        let paraString = search.substring(search.indexOf("?") + 1, search.length).split("&");
+        this.setState({isSurvey: paraString[0].split("=")[1]})
+    }
+
 
 
     render() {
-        return  this.props.loginData.user.isProfessor === '1' ?
-                <Student {...this.props} /> :
-                <Professor {...this.props}/>;
+        return <StudentTable {...this.props} />;
     }
 }
 
